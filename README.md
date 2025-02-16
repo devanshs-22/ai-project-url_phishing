@@ -1,5 +1,33 @@
 # ai-project-url_phishing
 ```
+Latest Update on the dataset 
+We have decided to change the older dataset and reduce the unnecesary features from the dataset 
+now our dataset contains features based on basically three things 
+1. Address Type
+2. Domain Based
+3. Html and java script based
+
+So, like for Address based features we have 9 sub features -
+1.Domain of Url
+2.IP Address
+3.@ symbol
+4.Length of Url
+5.Depth of url
+6.Redirection '//'
+7.'http/https' present
+8.Url shortening service
+9.prefix - suffix used 
+
+
+
+
+
+
+
+
+
+
+
 About the Dataset
 The dataset is named dataset_phishing.csv.
 
