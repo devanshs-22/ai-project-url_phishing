@@ -25,9 +25,11 @@ Now for the Domain based features
 3. traffic on website // need to find a way to add this feature
 4.End period of Domain
 
+HTML based features
 
-
-
+1.Iframe Redirection
+2.Disabling Right click
+3.Website Fordwarding 
 
 
 
