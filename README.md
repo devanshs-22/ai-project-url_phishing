@@ -31,7 +31,6 @@ So, like for Address based features we have 9 sub features -
 Now for the Domain based features
 1.DNS record
 2.Age of Domain
-3. traffic on website // need to find a way to add this feature
 4.End period of Domain
 
 HTML based features
