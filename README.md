@@ -180,14 +180,4 @@ tld_present_params → Presence of TLD in arguments
 qty_params → Number of parameters
 Miscellaneous Features:
 
-email_in_url → Whether an email is present in the URL
-time_response → Domain lookup response time
-domain_spf → Whether the domain has SPF
-asn_ip → AS Number (or ASN)
-time_domain_activation → Time (in days) since domain activation
-time_domain_expiration → Time (in days) until domain expiration
-url_google_index → Whether the URL is indexed by Google
-domain_google_index → Whether the domain is indexed by Google
-url_shortened → Whether the URL is shortened
-phishing → Indicates if the website is a phishing site
-```
+
