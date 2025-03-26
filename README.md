@@ -1,4 +1,5 @@
 # ai-project-url_phishing
+This project aims to develop an AI-based model for detecting phishing websites using machine learning techniques.
 ```
 Latest Updates on the Dataset
 1. Improvements in Dataset Handling
@@ -28,4 +29,12 @@ Latest Updates on the Dataset
 >Presence of Iframe Redirection
 >Right-Click Disabling
 >Website Forwarding
->This structured dataset enhances the efficiency and accuracy of the phishing detection model. 
+>This structured dataset enhances the efficiency and accuracy of the phishing detection model.
+
+3. Model Training and Evaluation
+>Random Forest Classifier
+>Decision tree
+>XGBoost Classifier
+>XGBoost achieved the highest accuracy of 85%
+
+Further Feature engineering is in process to enhance the accuracy.
