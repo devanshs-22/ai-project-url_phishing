@@ -2,50 +2,47 @@
 ```
 
 Latest Update on the Dataset
-We have decided to update our dataset by removing unnecessary features and focusing on three main categories:
+1. Changes in Dataset Handling
+-We have updated our dataset by removing unnecessary features and focusing on relevant ones.
 
-Address-Based Features (9 sub-features)
+-We are now selecting 5,000 legitimate websites and 5,000 phishing websites.
 
-Domain of URL
+-For each website, we extract 16 key features based on three main categories.
 
-Presence of IP Address
+-The collected 10,000 websites are shuffled and stored in a dataset named final.csv.
 
-Presence of '@' Symbol
+2. Feature Categories & Sub-Features
+(A) Address-Based Features (9 Features)
+-Domain of URL
 
-URL Length
+-Presence of IP Address
 
-URL Depth
+-Presence of '@' Symbol
 
-Redirection using '//'
+-URL Length
 
-Presence of 'http/https'
+-URL Depth
 
-Use of URL Shortening Services
+-Redirection using '//'
 
-Presence of Prefix-Suffix in Domain
+-Presence of 'http/https'
 
-Domain-Based Features (3 sub-features)
+-Use of URL Shortening Services
 
+-Presence of Prefix-Suffix in Domain
+
+(B) Domain-Based Features (3 Features)
 Availability of DNS Record
 
-Age of the Domain
+-Age of the Domain
 
-Domain Expiry Period
+-Domain Expiry Period
 
-HTML & JavaScript-Based Features (3 sub-features)
-
+(C) HTML & JavaScript-Based Features (3 Features)
 Presence of Iframe Redirection
 
-Disabling of Right-Click Functionality
+-Disabling of Right-Click Functionality
 
-Website Forwarding
+-Website Forwarding
 
-Current Handling of Features & Dataset
-We are randomly selecting 5,000 legitimate websites and 5,000 phishing websites.
-
-For each website, we extract 16 key features based on the categories mentioned above.
-
-The collected 10,000 websites are shuffled and stored in a dataset named final.csv.
-
-This structured approach ensures that our dataset remains relevant, efficient, and optimized for phishing detection.
-
+-This structured dataset will improve the efficiency and accuracy of our phishing detection model.
