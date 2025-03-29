@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Secure URL verification tool for detecting phishing attempts">
+  <meta name="keywords" content="url security, phishing detection, cybersecurity, url safety, machine learning">
+  <meta name="author" content="DEVANSH SINGHAL">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <!-- Custom CSS -->
+  <link href="static/style.css" rel="stylesheet">
+  <title>URL Phishing Detection</title>
+</head>
+<body>
+  <div class="wrapper">
+    <header class="header">
+      <div class="logo">
+        <i class="fa-solid fa-shield-check"></i>
+        <span>SafeLink</span>
+      </div>
+      <nav class="nav">
+        <ul>
+          <li><a href="#" class="active">Home</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="main-container">
+      <div class="content-area">
+        <div class="info-section">
+          <h1>URL Security <span>Verification</span></h1>
+          <p>Protect yourself from online threats by checking if a URL is legitimate or potentially harmful before visiting.</p>
+          <div class="features">
+            <div class="feature-item">
+              <i class="fa-solid fa-bolt"></i>
+              <span>Fast Analysis</span>
+            </div>
+            <div class="feature-item">
+              <i class="fa-solid fa-chart-line"></i>
+              <span>ML-Powered</span>
+            </div>
+            <div class="feature-item">
+              <i class="fa-solid fa-lock"></i>
+              <span>Secure</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="scanner-section">
+          <div class="scanner-card">
+            <div class="scan-header">
+              <i class="fa-solid fa-magnifying-glass-chart"></i>
+              <h2>URL Scanner</h2>
+            </div>
+            <form action="/" method="post" class="scan-form">
+              <div class="input-group">
+                <input type="url" name="url" id="url" placeholder="Enter URL to verify" required>
+                <button type="submit" class="scan-button">
+                  <span>Analyze</span>
+                  <i class="fa-solid fa-arrow-right"></i>
+                </button>
+              </div>
+            </form>
+            <div class="result-area" id="resultArea">
+              <div class="url-display">
+                <span>Analyzed URL:</span>
+                <a href="{{ url }}" target="_blank" class="url-link" id="analyzedUrl">{{ url }}</a>
+              </div>
+              <div class="safety-meter">
+                <div class="meter-gauge">
+                  <div class="meter-fill" id="meterFill"></div>
+                </div>
+                <p class="safety-score" id="prediction"></p>
+              </div>
+              <div class="action-buttons">
+                <button id="button1" class="action-btn safe-btn" onclick="window.open('{{url}}')" target="_blank">
+                  <i class="fa-solid fa-check-circle"></i>
+                  <span>Proceed Safely</span>
+                </button>
+                <button id="button2" class="action-btn danger-btn" onclick="window.open('{{url}}')" target="_blank">
+                  <i class="fa-solid fa-triangle-exclamation"></i>
+                  <span>Proceed Anyway</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-content">
+        <p>&copy; 2025 Devansh Singhal | All Rights Reserved</p>
+        <div class="social-links">
+          <a href="#"><i class="fa-brands fa-twitter"></i></a>
+          <a href="#"><i class="fa-brands fa-github"></i></a>
+          <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <!-- Key changes in your index.html file -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Get the xx value from Flask
+      let x = '{{xx}}';
+      let resultArea = document.getElementById('resultArea');
+      
+      console.log("Safety score from server:", x); // Debug output
+      
+      // Hide result area if no analysis has been done yet
+      if (x == '-1' || x === '') {
+        if (resultArea) resultArea.style.display = 'none';
+      } else {
+        if (resultArea) resultArea.style.display = 'block';
+        
+        // Parse the safety score
+        let num = parseFloat(x) * 100;
+        
+        // Set meter fill
+        const meterFill = document.getElementById('meterFill');
+        if (meterFill) meterFill.style.width = `${num}%`;
+        
+        // Update prediction text and styling
+        if (num >= 50) {
+          // Safe
+          if (meterFill) meterFill.classList.add('safe-fill');
+          if (document.getElementById('prediction')) {
+            document.getElementById('prediction').innerHTML = `${Math.round(num)}% Safe`;
+            document.getElementById('prediction').classList.add('safe-text');
+          }
+          if (document.getElementById('button1')) document.getElementById('button1').style.display = 'flex';
+          if (document.getElementById('button2')) document.getElementById('button2').style.display = 'none';
+        } else {
+          // Unsafe
+          if (meterFill) meterFill.classList.add('danger-fill');
+          if (document.getElementById('prediction')) {
+            document.getElementById('prediction').innerHTML = `${Math.round(100-num)}% Risky`;
+            document.getElementById('prediction').classList.add('danger-text');
+          }
+          if (document.getElementById('button1')) document.getElementById('button1').style.display = 'none';
+          if (document.getElementById('button2')) document.getElementById('button2').style.display = 'flex';
+        }
+      }
+      
+      // Also update the displayed URL
+      let analyzedUrl = document.getElementById('analyzedUrl');
+      let urlValue = '{{url}}';
+      if (analyzedUrl && urlValue && urlValue !== '') {
+        analyzedUrl.href = urlValue;
+        analyzedUrl.textContent = urlValue;
+      }
+    });
+  </script>
+</body>
+</html>
